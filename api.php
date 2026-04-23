@@ -47,6 +47,30 @@
             break;
     }
 
+    // ADICIONA AO ARRAY DE USUÁRIOS
+            $usuarios[] = $novo_usuario;
+
+
+        
+            file_put_contents($arquivo, json_encode($usuarios, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE));
+        
+            // RETORNA MENSAGEM DE SUCESSO
+        
+            echo json_encode(["mensagem" => "Usuário inserido com sucesso!", "usuarios" => $usuarios], JSON_UNESCAPED_UNICODE);
+            break;
+
+            //ADICIONA O NOVO USUARIO AO ARRAY EXISTENTE
+             array_push ($usuarios, $novo_usuario);
+             echo json_encode('Usuário inserido com sucesso!', JSON_UNESCAPED_UNICODE);
+             print_r($usuarios);
+            break;
+           
+         default:
+            // echo "MÉTODO NÃO ENCONTRADO!";
+            // break;
+            http_response_code (405); // Método não permitido
+            echo json_encode(["erro" => "Método não permitido!"], JSON_UNESCAPED_UNICODE);
+            break;
    
 
    
